@@ -1,2 +1,2 @@
 # koreanIMDb
-List IMDb Korean Titles
+List IMDb Korean Titles with hangul titles

@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import os.path
+import numpy as np
 
 from bs4 import BeautifulSoup
 from requests import get
@@ -23,7 +24,7 @@ def scrap(url):
         name.append(movieTitle)
         id.append(movieID)
         linkwiki = wiki+movieTitle.replace(" ","_")
-        print(linkwiki)
+        #print(linkwiki)
         scrapwiki(linkwiki)
 
 def scrapwiki(url):
@@ -33,11 +34,11 @@ def scrapwiki(url):
     titleLine = content.find_all('span',{'lang':'ko-Hang'})
     try:
         titleName = re.search('<span lang="ko-Hang" title="Korean language text">(.*)</span>', str(titleLine[1]))
-        print(titleName.group(1))
+        #print(titleName.group(1))
         kr_name.append(titleName.group(1))
     except:
-        error = "not found"
-        print(error)
+        error = np.NaN
+        #print(error)
         kr_name.append(error)
 
 def createCSV(): #create csv file
